@@ -681,9 +681,7 @@ class XapianSearchBackend(BaseSearchBackend):  # pylint: disable=too-many-instan
             query_string = xapian.Query(
                 xapian.Query.OP_AND,
                 query_string,
-                xapian.Query(
-                    xapian.Query.OP_AND, [self.parse_query(narrow_query) for narrow_query in narrow_queries],
-                ),
+                xapian.Query(xapian.Query.OP_AND, [self.parse_query(narrow_query) for narrow_query in narrow_queries],),
             )
 
         if limit_to_registered_models:
